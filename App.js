@@ -11,9 +11,13 @@ export default function App() {
     setModalIsVisible(true);
   }
 
+  function cancelAddMetaHandle(){
+    setModalIsVisible(false);
+  }
+
   function addMetaHandle(textoMeta){
     setListaMetas(listaAtualMetas => [...listaAtualMetas, {text: textoMeta, id: Math.random().toString()}]);
-
+    setModalIsVisible(false);
   };
 
   function deleteMetaHandle(id){
@@ -25,7 +29,7 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <Button title='Adicione uma Meta' color="#5e0acc" onPress={startAddMetaHandle}/>
-      <MetaInput onAddMeta={addMetaHandle} visible={modalIsVisible}/>
+      <MetaInput visible={modalIsVisible} onAddMeta={addMetaHandle} onCancelAddMeta={cancelAddMetaHandle}/>
       <View style={styles.metasContainer}>
         <FlatList data={listaMetas} renderItem={(itemData) => { 
           return <MetaItem text={itemData.item.text} id={itemData.item.id} onDeleteMetaItem={deleteMetaHandle}/>;

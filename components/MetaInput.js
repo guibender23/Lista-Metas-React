@@ -23,7 +23,7 @@ function MetaInput(props){
           
           <View style={styles.buttonContainer}>
             <Button title='Adicionar' onPress={addMetaHandler}/>
-            <Button title='Cancelar' />
+            <Button title='Cancelar' onPress={props.onCancelAddMeta}/>
           </View>
         </View>
       </Modal>
