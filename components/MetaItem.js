@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     metaItem:{
         margin: 8,
         borderRadius: 6,
-        backgroundColor: '#5e0acc',
+        backgroundColor: '#2296f3',
         color: 'white'
       },
     

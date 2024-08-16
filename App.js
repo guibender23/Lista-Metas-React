@@ -2,6 +2,7 @@ import { Button, FlatList, StyleSheet, View } from 'react-native';
 import MetaItem from './components/MetaItem';
 import { useState } from 'react';
 import MetaInput from './components/MetaInput';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -27,8 +28,11 @@ export default function App() {
   }
 
   return (
+    <>
+    {/* Isso altera a cor dos icones de cima (onde aparece hora,bateria,etc...) Precisa estar dentro de <> </>*/}
+    <StatusBar style='dark'/> 
     <View style={styles.appContainer}>
-      <Button title='Adicione uma Meta' color="#5e0acc" onPress={startAddMetaHandle}/>
+      <Button title='Adicione uma Meta' onPress={startAddMetaHandle}/>
       <MetaInput visible={modalIsVisible} onAddMeta={addMetaHandle} onCancelAddMeta={cancelAddMetaHandle}/>
       <View style={styles.metasContainer}>
         <FlatList data={listaMetas} renderItem={(itemData) => { 
@@ -41,6 +45,7 @@ export default function App() {
         
       </View>
     </View>
+    </>
   );
 }
 

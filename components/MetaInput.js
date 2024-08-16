@@ -1,4 +1,4 @@
-import {View, TextInput, Button, StyleSheet, Modal} from 'react-native';
+import {View, TextInput, Button, StyleSheet, Modal, Image} from 'react-native';
 import { useState } from 'react';
 
 function MetaInput(props){
@@ -16,14 +16,19 @@ function MetaInput(props){
     return(
         <Modal visible={props.visible} animationType='slide'>
           <View style={styles.inputContainer}>
+            <Image style={styles.image} source={require('../assets/image/target.png')}/>
             <TextInput style={styles.textInput} 
               placeholder='Sua metas' 
               onChangeText={metasInputHandle}
               value={textoMeta}/>
           
           <View style={styles.buttonContainer}>
-            <Button title='Adicionar' onPress={addMetaHandler}/>
-            <Button title='Cancelar' onPress={props.onCancelAddMeta}/>
+            <View style={styles.button}>
+              <Button title='Adicionar' onPress={addMetaHandler}/>
+            </View>
+            <View style={styles.button}>
+              <Button title='Cancelar' onPress={props.onCancelAddMeta}/>
+            </View>
           </View>
         </View>
       </Modal>
@@ -37,17 +42,25 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 24,
         borderBottomWidth: 1,
       },
       textInput: {
         borderWidth: 1,
         width: '70%',
         marginRight: 8,
-        padding: 8
+        padding: 8,
+        borderRadius: 6
       },
       buttonContainer:{
         flexDirection:'row'
+      },
+      button:{
+        margin: 10
+      },
+      image: {
+        width: 100,
+        height: 100,
+        margin: 20
       }
 
 });
